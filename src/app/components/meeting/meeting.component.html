@@ -1,0 +1,59 @@
+<form [formGroup]="eventForm" (ngSubmit)="submitForm()">
+    <!-- <div class="form-group">
+        <label for="timeZones">Select time zones</label>
+        <select class="form-control" id="timeZones" formControlName="timeZones">
+            <option value="">Select</option>
+            <option *ngFor="let  zone of timeZones;">{{zone}}</option>
+
+        </select>
+    </div> -->
+
+    <div class="form-group">
+        <label for="firstName">{{"First name"| translate}}</label>
+        <input type="text" class="form-control"
+            [ngClass]="{'is-invalid': eventForm.controls['firstName'].dirty && eventForm.controls['firstName'].invalid && eventForm.controls['firstName'].errors?.pattern }"
+            id="firstName" placeholder=" First Name" formControlName="firstName">
+        <div class="invalid-feedback">
+            Invalid First name.
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lastName">{{"Last name"| translate}}</label>
+        <input type="text" class="form-control"
+            [ngClass]="{'is-invalid': eventForm.controls['lastName'].dirty && eventForm.controls['lastName'].invalid && eventForm.controls['lastName'].errors?.pattern }"
+            id="lastName" placeholder="Last Name" formControlName="lastName">
+        <div class="invalid-feedback">
+            Invalid Last name.
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="date"> {{"Date" |  translate}}</label>
+        <input type="date" class="form-control" id="date" placeholder="Event Date" formControlName="date"
+            [min]="currentDate | date:'yyyy-MM-dd'"
+            [ngClass]="{'is-invalid': eventForm.controls['date'].dirty && eventForm.controls['date'].invalid && eventForm.controls['date'].errors }">
+        <div class="invalid-feedback">
+            Invalid Date.
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="startTime">{{"Start Time" | translate}}</label>
+        <input type="time" class="form-control" id="startTime" aria-describedby="time" placeholder="Start time"
+            formControlName="startTime" min="{{currentDate | date:'HH:mm'}}"
+            [ngClass]="{'is-invalid': eventForm.controls['startTime'].dirty && eventForm.controls['startTime'].invalid && eventForm.controls['startTime'].errors }">
+        <div class="invalid-feedback">
+            Invalid Time.
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="endTime">{{"End Time" | translate}}</label>
+        <input type="time" class="form-control" id="endTime" aria-describedby="time" placeholder="End time"
+            min="{{currentDate | date:'HH:mm'}}" [ngClass]=" {'is-invalid': eventForm.controls['endTime'].dirty && eventForm.controls['endTime'].invalid &&
+            eventForm.controls['endTime'].errors }" formControlName="endTime">
+        <div class="invalid-feedback">
+            Invalid Time.
+        </div>
+    </div>
+
+
+    <button type="submit" [disabled]="!eventForm.valid" class="btn btn-primary">{{"Submit" | translate}}</button>
+</form>

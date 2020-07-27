@@ -1,0 +1,30 @@
+<div *ngIf="events && events.length>0">
+    <div class="form-group">
+        <label for="timeZones">{{"Select time zone" | translate}}</label>
+        <select class="form-control" id="timeZones" (change)="updateTimeZone();" [(ngModel)]="newZone">
+            <option value="">Select</option>
+            <option *ngFor="let  zone of timeZones;">{{zone}}</option>
+
+        </select>
+    </div>
+    <div class="overflow-hidden">
+        <div class="card  border-primary mb-3" style="max-width: 18rem;" *ngFor="let event of events; let i=index;">
+            <div class="card-header">{{event.firstName}} {{event.lastName}}</div>
+            <div class="card-body text-primary">
+                <h5 class="card-title">{{event.date | date }}</h5>
+                <p class="card-text">{{event.startTime | date : "h:mm a" }} -
+                    {{event.endTime | date :  "h:mm a"}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container h-100" *ngIf="!events || events.length === 0">
+    <div class="row align-items-center h-100">
+        <div class="col-6 mx-auto">
+            <div class="jumbotron">
+                No meeting scheduled.
+            </div>
+        </div>
+    </div>
+</div>
