@@ -23,7 +23,7 @@
     "@ngx-translate/http-loader": "^6.0.0",
     "crypto-js": "^4.0.0",
     "moment": "^2.27.0",
-    "moment-timezone": "^0.5.31",
+    "moment-timezone": "^0.5.35",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
